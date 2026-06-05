@@ -18,10 +18,8 @@ No setup. No dependencies. Just two keymaps and a small Lua file.
 
 ## Default keymaps
 
-| Key | Action |
-|-----|--------|
-| `<C-`>` | Toggle terminal |
-| `<C-S-`>` | Open new terminal |
+ - <kbd>Ctrl</kbd>+<kbd>`</kbd> — Toggle terminal
+ - <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>`</kbd> — Open new terminal
 
 Works in both Normal and Terminal mode.
 
@@ -29,13 +27,13 @@ Works in both Normal and Terminal mode.
 
 ## Behavior
 
-### Toggle (`<C-`>`)
+### Toggle (<kbd>Ctrl</kbd>+<kbd>`</kbd>)
 
 - Opens a bottom split terminal if closed
 - Hides it if already visible
 - Reuses the same terminal buffer per tab
 
-### New terminal (`<C-S-`>`)
+### New terminal (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>`</kbd>)
 
 - Always creates a fresh terminal buffer
 - Opens in a new bottom split
