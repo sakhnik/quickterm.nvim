@@ -1,0 +1,108 @@
+*quickterm.txt*   Quickterm - simple per-tab terminal for Neovim
+
+==============================================================================
+QUICKTERM                                                *quickterm*
+
+A minimal terminal manager for Neovim providing:
+
+- Toggle terminal in bottom split per tab
+- Create new terminal instances
+- Per-tab state isolation
+- No dependencies, pure Neovim API
+
+==============================================================================
+USAGE                                                    *quickterm-usage*
+
+Quickterm defines two default mappings:
+
+>
+<C-`>      Toggle terminal
+<C-S-`>    Open new terminal
+<
+
+Both mappings work in Normal and Terminal mode.
+
+==============================================================================
+BEHAVIOR                                              *quickterm-behavior*
+
+Quickterm maintains a terminal per tabpage.
+
+Toggle behavior (*<C-`>*):
+- If terminal is visible → hide it
+- If terminal is hidden → reopen it
+- Reuses existing terminal buffer for the tab
+
+New terminal (*<C-S-`>*):
+- Always creates a fresh terminal buffer
+- Opens it in a new bottom split
+- Does not reuse previous terminal buffer
+
+Each tabpage has independent state.
+
+==============================================================================
+STATE MODEL                                          *quickterm-state*
+
+Internally Quickterm stores:
+
+>
+term_state[tabpage] = {
+  buf = terminal buffer id,
+  win = terminal window id (when visible)
+}
+<
+
+Rules:
+- One active “default terminal” per tab
+- Window is ephemeral (created/destroyed)
+- Buffer persists for reuse (toggle case)
+
+==============================================================================
+IMPLEMENTATION NOTES                              *quickterm-internals*
+
+- Terminal is started using:
+  `vim.fn.jobstart(vim.o.shell, { term = true })`
+
+- Split is always created at bottom:
+  `:botright split`
+
+- Buffer reuse is handled per tabpage
+
+- Window validity is checked before reuse
+
+==============================================================================
+LIMITATIONS                                        *quickterm-limitations*
+
+- Ctrl-\` and Ctrl-Shift-\` may not be distinguishable in some terminals
+- No session persistence across Neovim restarts
+- No multi-terminal management (only one default terminal per tab)
+
+==============================================================================
+KEY DESIGN GOAL                                   *quickterm-design*
+
+Quickterm intentionally avoids:
+
+- configuration complexity
+- multiple abstraction layers
+- external dependencies
+- plugin-style APIs
+
+It is designed as a small, readable terminal helper inside a single Lua file.
+
+==============================================================================
+FILES                                               *quickterm-files*
+
+Expected layout:
+
+>
+plugin/quickterm.lua
+doc/quickterm.txt
+<
+
+Load via your plugin manager or runtimepath.
+
+==============================================================================
+LICENSE                                             *quickterm-license*
+
+MIT (recommended)
+
+==============================================================================
