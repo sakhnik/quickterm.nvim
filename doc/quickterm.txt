@@ -101,3 +101,4 @@ LICENSE                                             *quickterm-license*
 MIT
 
 ==============================================================================
+ vim: set tw=78 ts=8 ft=help norl:
