@@ -13,13 +13,11 @@ A minimal terminal manager for Neovim providing:
 ==============================================================================
 USAGE                                                    *quickterm-usage*
 
-Quickterm defines two default mappings:
+Quickterm defines two default mappings: >
 
->
-<C-`>      Toggle terminal
-<C-S-`>    Open new terminal
+  <C-`>      Toggle terminal
+  <C-S-`>    Open new terminal
 <
-
 Both mappings work in Normal and Terminal mode.
 
 ==============================================================================
@@ -43,14 +41,12 @@ Each tabpage has independent state.
 STATE MODEL                                          *quickterm-state*
 
 Internally Quickterm stores:
-
 >
-term_state[tabpage] = {
-  buf = terminal buffer id,
-  win = terminal window id (when visible)
-}
+  term_state[tabpage] = {
+    buf = terminal buffer id,
+    win = terminal window id (when visible)
+  }
 <
-
 Rules:
 - One active “default terminal” per tab
 - Window is ephemeral (created/destroyed)
@@ -72,7 +68,7 @@ IMPLEMENTATION NOTES                              *quickterm-internals*
 ==============================================================================
 LIMITATIONS                                        *quickterm-limitations*
 
-- Ctrl-\` and Ctrl-Shift-\` may not be distinguishable in some terminals
+- *<Ctrl-`>* and *<Ctrl-Shift-`>* may not be distinguishable in some terminals
 - No session persistence across Neovim restarts
 - No multi-terminal management (only one default terminal per tab)
 
@@ -91,11 +87,10 @@ It is designed as a small, readable terminal helper inside a single Lua file.
 ==============================================================================
 FILES                                               *quickterm-files*
 
-Expected layout:
+Expected layout: >
 
->
-plugin/quickterm.lua
-doc/quickterm.txt
+  plugin/quickterm.lua
+  doc/quickterm.txt
 <
 
 Load via your plugin manager or runtimepath.
@@ -103,6 +98,6 @@ Load via your plugin manager or runtimepath.
 ==============================================================================
 LICENSE                                             *quickterm-license*
 
-MIT (recommended)
+MIT
 
 ==============================================================================
