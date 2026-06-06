@@ -25,12 +25,12 @@ BEHAVIOR                                              *quickterm-behavior*
 
 Quickterm maintains a terminal per tabpage.
 
-Toggle behavior (*<C-`>*):
+Toggle behavior (*<Ctrl-`>*):
 - If terminal is visible → hide it
 - If terminal is hidden → reopen it
 - Reuses existing terminal buffer for the tab
 
-New terminal (*<C-S-`>*):
+New terminal (*<Ctrl-Shift-`>*):
 - Always creates a fresh terminal buffer
 - Opens it in a new bottom split
 - Does not reuse previous terminal buffer
